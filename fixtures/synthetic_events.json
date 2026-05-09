@@ -132,5 +132,124 @@
     },
     "requestParameters": null,
     "errorCode": null
+  },
+  {
+    "eventID": "evt-008",
+    "eventName": "ConsoleLogin",
+    "eventSource": "signin.amazonaws.com",
+    "sourceIPAddress": "45.33.32.156",
+    "userAgent": "Mozilla/5.0",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-03-15T10:00:00Z",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDAEXAMPLE10",
+      "arn": "arn:aws:iam::111122223333:user/alice",
+      "userName": "alice"
+    },
+    "requestParameters": null,
+    "errorCode": "Failed authentication"
+  },
+  {
+    "eventID": "evt-009",
+    "eventName": "ConsoleLogin",
+    "eventSource": "signin.amazonaws.com",
+    "sourceIPAddress": "45.33.32.156",
+    "userAgent": "Mozilla/5.0",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-03-15T10:00:30Z",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDAEXAMPLE11",
+      "arn": "arn:aws:iam::111122223333:user/bob",
+      "userName": "bob"
+    },
+    "requestParameters": null,
+    "errorCode": "Failed authentication"
+  },
+  {
+    "eventID": "evt-010",
+    "eventName": "ConsoleLogin",
+    "eventSource": "signin.amazonaws.com",
+    "sourceIPAddress": "45.33.32.156",
+    "userAgent": "Mozilla/5.0",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-03-15T10:01:00Z",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDAEXAMPLE12",
+      "arn": "arn:aws:iam::111122223333:user/carol",
+      "userName": "carol"
+    },
+    "requestParameters": null,
+    "errorCode": "Failed authentication"
+  },
+  {
+    "eventID": "evt-011",
+    "eventName": "ConsoleLogin",
+    "eventSource": "signin.amazonaws.com",
+    "sourceIPAddress": "45.33.32.156",
+    "userAgent": "Mozilla/5.0",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-03-15T10:01:30Z",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDAEXAMPLE13",
+      "arn": "arn:aws:iam::111122223333:user/dave",
+      "userName": "dave"
+    },
+    "requestParameters": null,
+    "errorCode": "Failed authentication"
+  },
+  {
+    "eventID": "evt-012",
+    "eventName": "ConsoleLogin",
+    "eventSource": "signin.amazonaws.com",
+    "sourceIPAddress": "203.0.113.99",
+    "userAgent": "Mozilla/5.0",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-03-15T10:00:00Z",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDAEXAMPLE14",
+      "arn": "arn:aws:iam::111122223333:user/eve",
+      "userName": "eve"
+    },
+    "requestParameters": null,
+    "errorCode": "Failed authentication"
+  },
+  {
+    "eventID": "evt-013",
+    "eventName": "CreateUser",
+    "eventSource": "iam.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "aws-cli/2.x",
+    "awsRegion": "us-east-1",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "principalId": "AROAEXAMPLE:admin-session",
+      "arn": "arn:aws:sts::111122223333:assumed-role/OrgAdmin/admin-session"
+    },
+    "requestParameters": {
+      "userName": "vendor@acme-partner.com"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-014",
+    "eventName": "CreateUser",
+    "eventSource": "iam.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "Terraform/1.7",
+    "awsRegion": "us-east-1",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "principalId": "AROAEXAMPLE:tf-session",
+      "arn": "arn:aws:sts::111122223333:assumed-role/OrgAdmin/tf-session"
+    },
+    "requestParameters": {
+      "userName": "svc-automation"
+    },
+    "errorCode": null
   }
 ]

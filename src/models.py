@@ -15,6 +15,7 @@ class CloudTrailLikeEvent:
     request_params: Mapping[str, Any]
     error_code: str | None
     aws_region: str
+    event_time: str = ""
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "CloudTrailLikeEvent":
@@ -30,4 +31,5 @@ class CloudTrailLikeEvent:
             request_params=dict(rp) if isinstance(rp, Mapping) else {},
             error_code=raw.get("errorCode"),
             aws_region=str(raw.get("awsRegion", "")),
+            event_time=str(raw.get("eventTime", "")),
         )
