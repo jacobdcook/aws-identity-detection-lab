@@ -5,7 +5,7 @@ Lab-only Python project aligned with interview prep for **cloud and identity det
 ## What this is
 
 - Synthetic JSON events in `fixtures/synthetic_events.json` (identity-focused: IAM, STS AssumeRole, console root MFA context).
-- Detection functions in `src/detections.py` with explicit **baseline allowlists** so you can talk about false positives and environment context (Damien’s framing: behavior, noise, knowledge of good).
+- Detection functions in `src/detections.py` with explicit **baseline allowlists** so you can talk about false positives and environment context (the framing that matters for detection engineering: expected behavior, noise, and knowledge of good).
 - `pytest` proves which events fire which rules.
 
 ## Run tests
