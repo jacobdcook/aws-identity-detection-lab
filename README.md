@@ -20,6 +20,7 @@ python -m pytest tests/ -q
 
 - Which AWS log sources matter for identity: CloudTrail (management events), `signin.amazonaws.com` for console, STS for role assumption, IAM for keys and users.
 - How you separate **automation on baseline IPs** from **CreateAccessKey** or **AssumeRole** from a new IP.
+- How you catch **secrets harvesting** (T1555.006): one principal pulling Secrets Manager values, decrypted SSM SecureStrings, and Lambda env vars in minutes from a new IP, usually right after a run of AccessDenied recon calls. Pattern seen in November 2026 reporting on stolen-credential AWS intrusions.
 - How you would enrich with org context (IP allowlists, role sensitivity, break-glass accounts) in a real program.
 
 ## Next steps (optional)

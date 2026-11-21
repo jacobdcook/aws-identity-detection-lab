@@ -251,5 +251,240 @@
       "userName": "svc-automation"
     },
     "errorCode": null
+  },
+  {
+    "eventID": "evt-015",
+    "eventName": "ListUsers",
+    "eventSource": "iam.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:10:00Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": null,
+    "errorCode": "AccessDenied"
+  },
+  {
+    "eventID": "evt-016",
+    "eventName": "ListRoles",
+    "eventSource": "iam.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:10:20Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": null,
+    "errorCode": "AccessDenied"
+  },
+  {
+    "eventID": "evt-017",
+    "eventName": "ListBuckets",
+    "eventSource": "s3.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:10:40Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": null,
+    "errorCode": "AccessDenied"
+  },
+  {
+    "eventID": "evt-018",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:00Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": {
+      "secretId": "prod/db/primary"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-019",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:30Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": {
+      "secretId": "prod/stripe/api"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-020",
+    "eventName": "GetParameter",
+    "eventSource": "ssm.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:12:00Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": {
+      "name": "/prod/jwt-signing-key",
+      "withDecryption": true
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-021",
+    "eventName": "GetFunction",
+    "eventSource": "lambda.amazonaws.com",
+    "sourceIPAddress": "192.0.2.77",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:12:30Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+    },
+    "requestParameters": {
+      "functionName": "billing-export"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-022",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:00Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/PaymentsApp/task-01"
+    },
+    "requestParameters": {
+      "secretId": "prod/db/primary"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-023",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:05Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/PaymentsApp/task-01"
+    },
+    "requestParameters": {
+      "secretId": "prod/db/replica"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-024",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:10Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/PaymentsApp/task-01"
+    },
+    "requestParameters": {
+      "secretId": "prod/stripe/api"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-025",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "203.0.113.10",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:15Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/PaymentsApp/task-01"
+    },
+    "requestParameters": {
+      "secretId": "prod/redis"
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-026",
+    "eventName": "GetParameter",
+    "eventSource": "ssm.amazonaws.com",
+    "sourceIPAddress": "198.18.0.5",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:00Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/DevReadOnly/session"
+    },
+    "requestParameters": {
+      "name": "/dev/feature-flags",
+      "withDecryption": false
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-027",
+    "eventName": "GetParameter",
+    "eventSource": "ssm.amazonaws.com",
+    "sourceIPAddress": "198.18.0.5",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:10Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/DevReadOnly/session"
+    },
+    "requestParameters": {
+      "name": "/dev/region",
+      "withDecryption": false
+    },
+    "errorCode": null
+  },
+  {
+    "eventID": "evt-028",
+    "eventName": "GetSecretValue",
+    "eventSource": "secretsmanager.amazonaws.com",
+    "sourceIPAddress": "198.18.0.5",
+    "userAgent": "aws-sdk-go-v2/1.x",
+    "awsRegion": "us-east-1",
+    "eventTime": "2026-11-20T03:11:20Z",
+    "userIdentity": {
+      "type": "AssumedRole",
+      "arn": "arn:aws:sts::111122223333:assumed-role/DevReadOnly/session"
+    },
+    "requestParameters": {
+      "secretId": "dev/test-db"
+    },
+    "errorCode": null
   }
 ]

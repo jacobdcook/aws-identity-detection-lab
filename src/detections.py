@@ -141,3 +141,55 @@ def detect_external_user_created(
         if "@" in username:
             hits.append((e.event_id, f"External-pattern user created: {username}"))
     return hits
+
+
+SECRET_READ_EVENTS = frozenset({"GetSecretValue", "BatchGetSecretValue", "GetParameter", "GetParameters", "GetFunction"})
+
+
+def _is_secret_read(e: CloudTrailLikeEvent) -> bool:
+    if e.event_name not in SECRET_READ_EVENTS or e.error_code:
+        return False
+    if e.event_name in ("GetParameter", "GetParameters"):
+        # plaintext config reads are noise; only decrypted SecureString values are secrets
+        return e.request_params.get("withDecryption") is True
+    return True
+
+
+def detect_secrets_harvesting(
+    events: Iterable[CloudTrailLikeEvent],
+    threshold: int = 3,
+    window_minutes: int = 10,
+) -> list[tuple[str, str]]:
+    """
+    Flag a principal that reads >= threshold secret stores (Secrets Manager, decrypted SSM
+    SecureString, Lambda GetFunction env vars) within a window from a non-baseline IP (T1555.006).
+    AccessDenied calls by the same principal are counted into the message: failed recon right
+    before successful secret reads is the stolen-credential pattern.
+    """
+    reads: dict[str, list[datetime]] = defaultdict(list)
+    denied: dict[str, int] = defaultdict(int)
+    for e in events:
+        arn = str(e.user_identity.get("arn", ""))
+        if e.error_code == "AccessDenied":
+            denied[arn] += 1
+        if not _is_secret_read(e) or e.source_ip in BASELINE_CORPORATE_IPS or not e.event_time:
+            continue
+        try:
+            reads[arn].append(datetime.fromisoformat(e.event_time.replace("Z", "+00:00")))
+        except ValueError:
+            pass
+
+    hits: list[tuple[str, str]] = []
+    window = timedelta(minutes=window_minutes)
+    for arn, times in reads.items():
+        times.sort()
+        best = max(sum(1 for t in times if s <= t < s + window) for s in times)
+        if best >= threshold:
+            hits.append(
+                (
+                    arn,
+                    f"Secrets harvesting: {best} secret reads in {window_minutes}m from non-baseline IP, "
+                    f"{denied[arn]} AccessDenied by same principal (T1555.006)",
+                )
+            )
+    return hits

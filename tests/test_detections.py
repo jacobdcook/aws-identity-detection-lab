@@ -8,6 +8,7 @@ from detections import (
     detect_external_user_created,
     detect_password_spray,
     detect_root_console_without_mfa_context,
+    detect_secrets_harvesting,
 )
 
 _FIXTURES = Path(__file__).resolve().parents[1] / "fixtures" / "synthetic_events.json"
@@ -70,3 +71,27 @@ def test_internal_user_not_flagged():
     hits = detect_external_user_created(_events())
     ids = [h[0] for h in hits]
     assert "evt-014" not in ids
+
+
+_ATTACKER = "arn:aws:sts::111122223333:assumed-role/CiBuildRunner/i-0synthetic01"
+
+
+def test_secrets_harvesting_flags_attacker_with_denied_recon():
+    hits = dict(detect_secrets_harvesting(_events()))
+    assert _ATTACKER in hits
+    assert "4 secret reads" in hits[_ATTACKER]
+    assert "3 AccessDenied" in hits[_ATTACKER]
+
+
+def test_secrets_harvesting_ignores_baseline_app_role():
+    principals = [h[0] for h in detect_secrets_harvesting(_events())]
+    assert "arn:aws:sts::111122223333:assumed-role/PaymentsApp/task-01" not in principals
+
+
+def test_secrets_harvesting_ignores_plaintext_parameter_reads():
+    principals = [h[0] for h in detect_secrets_harvesting(_events())]
+    assert "arn:aws:sts::111122223333:assumed-role/DevReadOnly/session" not in principals
+
+
+def test_secrets_harvesting_threshold_respected():
+    assert detect_secrets_harvesting(_events(), threshold=5) == []
